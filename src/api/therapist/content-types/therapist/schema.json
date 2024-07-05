@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "therapists",
+  "info": {
+    "singularName": "therapist",
+    "pluralName": "therapists",
+    "displayName": "Therapists",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Address": {
+      "type": "text"
+    },
+    "Patients": {
+      "type": "string",
+      "required": false
+    },
+    "Year_of_Experience": {
+      "type": "string",
+      "required": true
+    },
+    "StartTime": {
+      "type": "time",
+      "required": true,
+      "default": "10:00"
+    },
+    "EndTime": {
+      "type": "time",
+      "required": true,
+      "default": "17:00"
+    },
+    "About": {
+      "type": "richtext",
+      "default": "My bio...",
+      "required": true
+    },
+    "Phone": {
+      "type": "string",
+      "required": true,
+      "default": "(201) 561-2688"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Premium": {
+      "type": "boolean"
+    },
+    "doc_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::doc-category.doc-category",
+      "inversedBy": "therapists"
+    },
+    "LocationLink": {
+      "type": "string",
+      "required": true,
+      "default": "https://maps.app.goo.gl/nYu9Rz2o2xFnwzWc6?g_st=ic"
+    },
+    "Zocdoc": {
+      "type": "string"
+    },
+    "Linkedin": {
+      "type": "string"
+    },
+    "Instagram": {
+      "type": "string"
+    },
+    "appointments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::appointment.appointment",
+      "mappedBy": "therapist"
+    }
+  }
+}
